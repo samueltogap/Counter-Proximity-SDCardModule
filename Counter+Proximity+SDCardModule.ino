@@ -75,7 +75,7 @@ if(myRTC.dayofmonth<10){
   }
  
 //penulisan data "/" sebagai separator
-Serial.print("_");
+Serial.print("/");
  
 //fungsi penulisan data untuk bulan
 if(myRTC.month<10){
@@ -87,7 +87,7 @@ if(myRTC.month<10){
   }
  
 //penulisan data "/" sebagai separator
-Serial.print("_");
+Serial.print("/");
  
 //fungsi penulisan data untuk tahun
 Serial.print(myRTC.year);
@@ -145,7 +145,7 @@ if(myRTC.seconds<10){
     else{
     myFile.print(myRTC.dayofmonth);
     }
-    myFile.print("_");
+    myFile.print("/");
     if(myRTC.month<10){
     myFile.print("0");
     myFile.print(myRTC.month);
@@ -153,7 +153,7 @@ if(myRTC.seconds<10){
     else{
     myFile.print(myRTC.month);
     }
-    myFile.print("_");
+    myFile.print("/");
     myFile.print(myRTC.year);
     
     myFile.print(" ");
@@ -199,12 +199,29 @@ if(myRTC.seconds<10){
   }
   
   //LCD Print Time
-  lcd.setCursor(0,0);
-  lcd.print(myRTC.dayofmonth);
-  lcd.print("_");
-  lcd.print(myRTC.month);
-  lcd.print("_");
-  lcd.print(myRTC.year);
+if(myRTC.dayofmonth<10){
+    lcd.setCursor(0,0);
+    lcd.print("0");
+    lcd.print(myRTC.dayofmonth);
+    }
+    else{
+    lcd.print(myRTC.dayofmonth);
+    }
+    lcd.setCursor(2,0);
+    lcd.print("/");
+    if(myRTC.month<10){
+    lcd.setCursor(3,0);
+    lcd.print("0");
+    lcd.print(myRTC.month);
+    }
+    else{
+    lcd.print(myRTC.month);
+    }
+    lcd.setCursor(5,0);
+    lcd.print("/");
+    lcd.setCursor(6,0);
+    lcd.print(myRTC.year);
+  
   if(myRTC.hours<10){
     lcd.setCursor(11,0);
     lcd.print("0");
